@@ -4,16 +4,17 @@ import { queryByUID } from '../utils/queries'
 
 function App({ Component, pageProps }) {
   const [response, setReponse] = useState()
-  const { tenant } = pageProps || {}
+  const { tenant, path } = pageProps || {}
   const { name, domains } = tenant || {}
+
+  const uid = path.substring(1)
 
   const environment = process.env.NODE_ENV === 'staging' ? 'stage' : (process.env.NODE_ENV || 'development')
   const domain = domains[0][environment]
   /* uid will be fetched by requisition */
-  const uid = ''
 
   async  function fetchDocument() {
-    const res =  await queryByUID('template', 'home' )
+    const res =  await queryByUID('template', 'home')
     setReponse(res)
   }
 
@@ -34,6 +35,7 @@ const filterByType = arr => ({ type }) => arr.includes(type)
 
 App.getInitialProps = async({ Component, ctx }) => {
   const tenant = ctx?.req?.tenant
+  const path = ctx?.req?.originalUrl
   let pageProps = {}
 
   if(Component.getInitialProps) {
@@ -43,7 +45,8 @@ App.getInitialProps = async({ Component, ctx }) => {
   return {
     pageProps: {
       ...pageProps,
-      tenant
+      tenant,
+      path
     }
   }
 }
