@@ -23,6 +23,6 @@ export const routeResolver = {
     {
       "type":"template",
       "path":"/"
-    },
+    }
   ]
 };

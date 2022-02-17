@@ -11,10 +11,11 @@ function App({ Component, pageProps }) {
 
   const environment = process.env.NODE_ENV === 'staging' ? 'stage' : (process.env.NODE_ENV || 'development')
   const domain = domains[0][environment]
-  /* uid will be fetched by requisition */
-
+  
+  
+  /* We also need to restrict catch data by domain*/
   async  function fetchDocument() {
-    const res =  await queryByUID('template', 'home')
+    const res =  await queryByUID('template', uid)
     setReponse(res)
   }
 
