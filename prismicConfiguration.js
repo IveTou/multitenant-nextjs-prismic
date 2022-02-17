@@ -13,9 +13,6 @@ export const accessToken = 'MC5ZZzZaTnhFQUFDSUFVSGs5.Fkvvv70C77-977-977-9BkMSB--
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
 export const linkResolver = (doc) => {
-  if (['template'].includes(doc.type)) {
-    return `/`
-  }
   return '/'
 }
 

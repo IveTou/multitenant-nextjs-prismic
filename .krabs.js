@@ -1,7 +1,7 @@
 module.exports = {
   tenants: [
     {
-      name: 'lover',
+      name: 'template',
       domains: [
         {
           development: 'lover.escale.br',// /dev\.[a-z]*\.local\.website-1\.com/ // Regex supported!
@@ -11,7 +11,7 @@ module.exports = {
       ],
     },
     {
-      name: 'hater',
+      name: 'template',
       domains: [
         {
           development: 'hater.escale.com',
