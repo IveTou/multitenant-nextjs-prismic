@@ -9,9 +9,11 @@ async function fetchDocs(page = 1, routes = []) {
     return [...new Set(allRoutes)]
 }
 
-export const queryByUID = async (type, uid) => {
+export const queryByUID = async (type, uid, domain) => {
     const document =  await Client().getByUID(type, uid)
     const config = await Client().getByUID('config', document?.data?.config?.uid)
+    
+    if(config?.data?.domain !== domain) return null
 
     return { document, config }
 }

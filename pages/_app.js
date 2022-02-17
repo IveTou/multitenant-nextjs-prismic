@@ -13,9 +13,9 @@ function App({ Component, pageProps }) {
   const domain = domains[0][environment]
   
   
-  /* We also need to restrict catch data by domain*/
+  /* TODO: We also need to restrict catch data by domain*/
   async  function fetchDocument() {
-    const res =  await queryByUID('template', uid)
+    const res =  await queryByUID('template', uid, domain)
     setReponse(res)
   }
 
@@ -27,6 +27,10 @@ function App({ Component, pageProps }) {
   /* Here we can filter prismic data document by uid */
   /* And pass properly pass data by props */
   const data = { ...response, domain }
+
+  if(!response) {
+    return <h1>404</h1>
+  }
 
   
   return <Component { ...data } />
