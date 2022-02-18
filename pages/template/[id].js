@@ -1,9 +1,7 @@
 import React from 'react'
 
-const Template = ({ config, document, domain }) => {
+const Template = ({ config, documentData, domain }) => {
     const { data: configData } = config || {}
-    const { data: documentData } = document || {}
-
 
     return (
         <div>

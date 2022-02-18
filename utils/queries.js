@@ -1,3 +1,4 @@
+import Prismic from '@prismicio/client'
 import { Client } from './prismicHelpers'
 
 async function fetchDocs(page = 1, routes = []) {
@@ -10,12 +11,18 @@ async function fetchDocs(page = 1, routes = []) {
 }
 
 export const queryByUID = async (type, uid, domain) => {
-    const document =  await Client().getByUID(type, uid)
-    const config = await Client().getByUID('config', document?.data?.config?.uid)
+    /* TODO: if don't have ui force set type param to 'landing' */
+    const document =  uid
+        ? await Client().getByUID(type, uid)
+        : await Client().query([Prismic.Predicates.at('document.type', 'landing')])
+
+    const documentData = document?.data || document.results[0]?.data
+
+    const config = await Client().getByUID('config', documentData.config?.uid)
     
     if(config?.data?.domain !== domain) return null
 
-    return { document, config }
+    return { documentData, config }
 }
   
 /** Fetches all Prismic documents and filters them (eg. by document type).
