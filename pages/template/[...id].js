@@ -1,6 +1,8 @@
 import React from 'react'
 
 const Template = ({ config, document, domain }) => {
+  if(!document) return null
+  
   const { data: configData } = config || {}
 
   return (

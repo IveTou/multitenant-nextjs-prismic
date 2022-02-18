@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Template = ({ config, document, domain }) => {
+const Landing = ({ config, document, domain }) => {
+  if(!document) return null
+
   const { data: configData } = config || {}
 
   return (
     <div>
-      <h1>I'll Template you!</h1>
+      <h1>I'll Landing you!</h1>
       <h2>My domain is {domain}</h2>
       <h2>My theme is {configData?.theme}</h2>
       <h2>My info is:</h2>
@@ -19,4 +21,4 @@ const Template = ({ config, document, domain }) => {
   )
 }
 
-export default Template
+export default Landing
