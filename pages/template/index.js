@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Template = ({ config, documentData, domain }) => {
+const Template = ({ config, document, domain }) => {
     const { data: configData } = config || {}
 
     return (
@@ -10,8 +10,8 @@ const Template = ({ config, documentData, domain }) => {
             <h2>My theme is {configData?.theme}</h2>
             <h2>My info is:</h2>
             <ul>
-                <li>{documentData?.title}</li>
-                <li>{documentData?.description}</li>
+                <li>{document?.title}</li>
+                <li>{document?.description}</li>
             </ul>
 
             <h4>Then I can decide what and how to show you things!</h4>

@@ -31,7 +31,6 @@ function App({ Component, pageProps }) {
   if(!response) {
     return <h1>404</h1>
   }
-
   
   return <Component { ...data } />
 }

@@ -20,5 +20,15 @@ module.exports = {
         },
       ],
     },
+    {
+      name: 'template',
+      domains: [
+        {
+          development: 'hackathon.escale.com',
+          stage: 'stage.website-2.com',
+          production: /[\w|\d|-|_]+\.website-2.com/, // Regex supported!
+        },
+      ],
+    },
   ],
 };
