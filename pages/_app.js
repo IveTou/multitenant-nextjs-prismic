@@ -12,9 +12,7 @@ function App({ Component, pageProps }) {
   const environment = process.env.NODE_ENV === 'staging' ? 'stage' : (process.env.NODE_ENV || 'development')
   const domain = domains[0][environment]
   
-  
-  /* TODO: We also need to restrict catch data by domain*/
-  async  function fetchDocument() {
+    async  function fetchDocument() {
     const res =  await queryByUID('template', uid, domain)
     setReponse(res)
   }
@@ -23,9 +21,6 @@ function App({ Component, pageProps }) {
     fetchDocument()
   }, [])
 
-
-  /* Here we can filter prismic data document by uid */
-  /* And pass properly pass data by props */
   const data = { ...response, domain }
 
   if(!response) {
@@ -34,8 +29,6 @@ function App({ Component, pageProps }) {
   
   return <Component { ...data } />
 }
-
-const filterByType = arr => ({ type }) => arr.includes(type)
 
 App.getInitialProps = async({ Component, ctx }) => {
   const tenant = ctx?.req?.tenant
